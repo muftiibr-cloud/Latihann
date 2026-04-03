@@ -1,5 +1,3 @@
-body {
-    color: red;
-    background-color: black;
-    margin: 0;
-/* sengaja error: kurang kurung tutup */
+.top {
+    background-color: #8bae4;
+}
