@@ -1,8 +1,9 @@
-name: Test Before Merge
+name: Automasi Testing Sebelum Merge
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches:
+    - main
 
 jobs:
   test:
@@ -10,22 +11,16 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
+      - name: Install HTMLHint & Stylelint
+        run: |
+          npm install -g htmlhint stylelint
 
-      - name: Install HTMLHint
-        run: npm install -g htmlhint
-
-      - name: Install Stylelint
-        run: npm install -g stylelint stylelint-config-standard
-
-      - name: Run HTML Linting
+      - name: Periksa HTML
         run: htmlhint "**/*.html"
 
-      - name: Run CSS Linting
+      - name: Periksa CSS
         run: stylelint "**/*.css"
+      
